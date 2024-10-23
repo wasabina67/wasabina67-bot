@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+line-bot-sdk = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
