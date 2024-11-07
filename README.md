@@ -10,4 +10,3 @@
 -->
 
 wasabina67 Bot | LINE Official Account
-
