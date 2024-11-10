@@ -1,4 +1,5 @@
 import os
+import sys
 
 from dotenv import load_dotenv
 from linebot.v3 import messaging  # type: ignore
@@ -6,7 +7,7 @@ from linebot.v3 import messaging  # type: ignore
 load_dotenv(override=True)
 
 
-def main():
+def main(msg):
     user_id = os.getenv("LINE_USER_ID")
     access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 
@@ -14,7 +15,7 @@ def main():
     message_dict = {
         "to": user_id,
         "messages": [
-            {"type": "text", "text": "text"},
+            {"type": "text", "text": msg},
         ],
     }
 
@@ -23,10 +24,11 @@ def main():
         push_message_request = messaging.PushMessageRequest.from_dict(obj=message_dict)
         try:
             resp = messaging_api.push_message(push_message_request)  # noqa
-            print(resp)
+            # print(resp)
         except Exception as e:
             print(e)
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 2:
+        main(msg=sys.argv[1])
