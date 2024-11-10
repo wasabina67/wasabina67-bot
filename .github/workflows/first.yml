@@ -1,12 +1,12 @@
-name: morning-alert
+name: first
 
 on:
   schedule:
-    - cron: '00 23 * * *'
+    - cron: '00 03 * * *'
   workflow_dispatch:
 
 jobs:
-  morning-alert:
+  first:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,4 +32,4 @@ jobs:
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         run: |
-          python src/run.py morning
+          python src/run.py first
